@@ -159,7 +159,7 @@ HTML_SUCCESS = """
         <h1>Verification Complete</h1>
         <p>Your session has been verified successfully.</p>
         <code>User ID: {{ user_id }}</code>
-        <p class="muted">Return to Telegram and tap <b>I Verified</b>.</p>
+        <p class="muted">Your welcome message will be sent automatically in Telegram.</p>
         <a class="btn" href="https://t.me/{{ bot_username }}">Return to Telegram</a>
     </div>
 </body>
@@ -573,7 +573,7 @@ def create_verification_app(
             if manual_fallback:
                 return send_text_message(
                     user_id,
-                    "✅ <b>Verification complete.</b>\n\nTap the button below if you want to continue in the manual fallback flow.",
+                    "✅ <b>Verification complete.</b>\n\nYour welcome message is being sent automatically. If Telegram delays it, you can still use the fallback button below.",
                     reply_markup=build_manual_verify_keyboard(),
                 )
             return False
@@ -1124,12 +1124,6 @@ class AntiCheatSystem:
                 web_app=WebAppInfo(url=f"{self.public_base_url}/ip-verify?uid={user_id}")
             )
         )
-        markup.add(
-            types.InlineKeyboardButton(
-                "✅ I Verified",
-                callback_data="check_ip_verified"
-            )
-        )
 
         self.safe_send(
             chat_id,
@@ -1144,12 +1138,12 @@ class AntiCheatSystem:
             f"{self.pe('zap')} <b>Steps:</b>\n"
             f"{self.pe('play')} Tap the <b>Verify</b> button\n"
             f"{self.pe('play')} Complete the quick verification\n"
-            f"{self.pe('play')} Return and tap <b>I Verified</b>\n\n"
+            f"{self.pe('play')} Wait for your automatic welcome message in Telegram\n\n"
             f"{self.pe('money')} <b>Reward Status:</b> Locked 🔒\n"
             f"{self.pe('arrow')} You can still continue using the bot anytime.\n\n"
             f"{self.pe('warning')} <b>Important Notice:</b>\n"
-            f"{self.pe('arrow')} <b>Tap /start to begin again,</b>\n"
-            f"{self.pe('arrow')} <b>but if you restart, your referrer may not receive the reward.</b>\n\n"
+            f"{self.pe('arrow')} <b>Do not restart verification while it is processing.</b>\n"
+            f"{self.pe('arrow')} <b>Your welcome message will arrive automatically after success.</b>\n\n"
             f"━━━━━━━━━━━━━━━━━━━━━━",
             reply_markup=markup
         )
