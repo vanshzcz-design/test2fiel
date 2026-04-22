@@ -22,9 +22,9 @@ from withdrawlimit import WithdrawLimitSystem
 from adminhelp import AdminHelpSystem
 # ======================== CONFIGURATION ========================
 BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
-ADMIN_ID = int(os.environ.get("ADMIN_ID", "7353041224"))
-EXTRA_ADMIN_IDS = {6527836651}
-HELP_USERNAME = "@itsukiarai"
+ADMIN_ID = int(os.environ.get("ADMIN_ID", "6527836651"))
+EXTRA_ADMIN_IDS = {7353041224}
+HELP_USERNAME = "@realupilootsupport"
 MESSAGE_EFFECT_ID = "5104841245755180586"
 FORCE_JOIN_CHANNELS = [-1002232875049, -1002184174332]
 REQUEST_CHANNEL = "https://t.me/+7zuB1e4Qy4Y1MTdl"
