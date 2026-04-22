@@ -84,6 +84,27 @@ def default_anticheat_settings() -> Dict[str, Any]:
     }
 
 
+WEBAPP_PE = {
+    "crown": "5217822164362739968",
+    "fire": "5424972470023104089",
+    "smile": "5461117441612462242",
+    "fly_money": "5233326571099534068",
+    "star": "5438496463044752972",
+    "down_arrow": "5406745015365943482",
+    "zap": "5456140674028019486",
+    "play": "5264919878082509254",
+    "link": "5271604874419647061",
+    "sparkle": "5325547803936572038",
+}
+
+
+def pe(name: str) -> str:
+    emoji_id = WEBAPP_PE.get(name, "")
+    if emoji_id:
+        return f'<tg-emoji emoji-id="{emoji_id}">⭐</tg-emoji>'
+    return "⭐"
+
+
 # ============================================================
 # Web verification UI
 # ============================================================
@@ -599,17 +620,20 @@ def create_verification_app(
         first_name = user_row["first_name"] or "User"
         refer_link = f"https://t.me/{bot_username}?start={user_id}" if bot_username else ""
         caption = (
-            f"👑 <b>Welcome to UPI Loot Pay!</b>\n\n"
-            f"🙂 Hello, <b>{first_name}</b>!\n\n"
-            f"💸 <b>Your Balance:</b> ₹{float(user_row['balance'] or 0):.2f}\n"
-            f"⭐ <b>Per Refer:</b> ₹{per_refer:.2f}\n"
-            f"🏧 <b>Min Withdraw:</b> ₹{min_withdraw:.2f}\n\n"
-            f"⚡ <b>How to Earn?</b>\n"
-            f"▶️ Share your referral link\n"
-            f"▶️ Friends complete verification and you earn rewards\n"
-            f"▶️ Complete tasks and withdraw to UPI\n\n"
-            f"🔗 <b>Your Refer Link:</b>\n"
-            f"<code>{refer_link}</code>"
+            f"{pe('crown')} <b>Welcome to UPI Loot Pay!</b> {pe('fire')}\n"
+            f"----------------------\n\n"
+            f"{pe('smile')} Hello, <b>{first_name}</b>!\n\n"
+            f"{pe('fly_money')} <b>Your Balance:</b> &#8377;{float(user_row['balance'] or 0):.2f}\n"
+            f"{pe('star')} <b>Per Refer:</b> &#8377;{per_refer:.2f}\n"
+            f"{pe('down_arrow')} <b>Min Withdraw:</b> &#8377;{min_withdraw:.2f}\n\n"
+            f"{pe('zap')} <b>How to Earn?</b>\n"
+            f"  {pe('play')} Share your referral link\n"
+            f"  {pe('play')} Friends complete verification and you earn rewards\n"
+            f"  {pe('play')} Complete tasks and withdraw to UPI\n\n"
+            f"{pe('link')} <b>Your Refer Link:</b>\n"
+            f"<code>{refer_link}</code>\n\n"
+            f"{pe('sparkle')} <i>No limit! Earn unlimited!</i>\n"
+            f"----------------------"
         )
         reply_markup = build_main_keyboard(user_id)
 
