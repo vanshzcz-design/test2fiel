@@ -1168,6 +1168,9 @@ class AntiCheatSystem:
             f"{self.pe('warning')} <b>Important Notice:</b>\n"
             f"{self.pe('arrow')} <b>Do not restart verification while it is processing.</b>\n"
             f"{self.pe('arrow')} <b>Your welcome message will arrive automatically after success.</b>\n\n"
+            f"{self.pe('arrow')} <b> /start if any bug or issue click on it.</b>\n\n"
+            f"{self.pe('warning')} <b> Note Your Refferal Cant Recive Reward Without IP Verification.</b>\n\n"
+            f"{self.pe('warning')} <b> Click ON /start TO Skip Verification.</b>\n\n"
             f"━━━━━━━━━━━━━━━━━━━━━━",
             reply_markup=markup
         )
